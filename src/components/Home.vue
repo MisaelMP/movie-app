@@ -98,4 +98,8 @@ const loadPreviousMovies = () => {
     @apply mt-5;
   }
 }
+
+ .is-active {
+    @apply bg-indigo-800 text-white;
+  }
 </style>
