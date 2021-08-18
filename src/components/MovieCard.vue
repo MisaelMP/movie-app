@@ -27,9 +27,9 @@
 	</div>
 </template>
 <script setup>
-import { onMounted, computed, watch } from 'vue';
-import { useStore } from 'vuex';
-import { useRoute } from 'vue-router';
+import { onMounted, computed, watch } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
 
 const props = defineProps({
 	movie: Object,
@@ -37,7 +37,7 @@ const props = defineProps({
 
 const store = useStore();
 const route = useRoute();
-const loadMovie = (value) => store.dispatch('LOAD_MOVIE', value);
+const loadMovie = (value) => store.dispatch("LOAD_MOVIE", value);
 const singleMovie = computed(() => store.getters.getMovie);
 
 watch(
