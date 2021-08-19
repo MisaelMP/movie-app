@@ -2,15 +2,15 @@
   <div
     v-if="movie.Title"
     @click="singleMovie(movie.imdbID)"
-    :class="isActive ? 'is-active' : !isActive"
+    :class="{'is-active' : isActive}"
   >
     <p class="c-movie-list__content">{{ movie.Title || "not available" }}</p>
     <p class="c-movie-list__year">{{ movie.Year || "not available" }}</p>
   </div>
 </template>
 <script setup>
-import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { ref, computed } from "vue";
 
 import MovieCard from "./MovieCard.vue";
 
@@ -18,13 +18,14 @@ const props = defineProps({
   movie: Object,
 });
 
-let isActive = ref(false);
-
 const router = useRouter();
+const route = useRoute();
+
+let isActive = computed(() => props.movie.imdbID == route.params.id);
+
 
 function singleMovie(id) {
   router.push(`/movie/${id}`);
-  isActive.value = true;
 }
 </script>
 <style scoped lang="postcss">
